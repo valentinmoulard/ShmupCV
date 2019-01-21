@@ -6,9 +6,18 @@ public class Player : MonoBehaviour
 {
     public float speed = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject bullet;
+    public float shootFrequency;
+
+    IEnumerator Start()
     {
+        while (true)
+        {
+            //Bullet make at the same location and angle as the player
+            Instantiate(bullet, transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(shootFrequency);
+        }
 
     }
 
