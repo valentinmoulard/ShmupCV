@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 5f;
-
-    public GameObject bullet;
-    public float shootFrequency;
+    Spaceship spaceship;
 
     IEnumerator Start()
     {
+        spaceship = this.GetComponent<Spaceship>();
+        
         while (true)
         {
-            //Bullet make at the same location and angle as the player
-            Instantiate(bullet, transform.position, transform.rotation);
+            spaceship.Shot(transform);
 
-            yield return new WaitForSeconds(shootFrequency);
+            yield return new WaitForSeconds(spaceship.shotDelay);
         }
 
     }
@@ -29,6 +27,6 @@ public class Player : MonoBehaviour
 
         Vector2 direction = new Vector2(x, y).normalized;
 
-        this.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        spaceship.Move(direction);
     }
 }
