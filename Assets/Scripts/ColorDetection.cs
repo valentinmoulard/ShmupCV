@@ -72,6 +72,11 @@ public class ColorDetection : MonoBehaviour
             Mat img_find_contour = new Mat();
             CvInvoke.FindContours(fermetureMat, contours, hierarchy, RetrType.List, ChainApproxMethod.ChainApproxNone);
 
+
+
+
+
+
             //plus gros contour
             for (int i = 0; i < contours.Size; i++)
             {

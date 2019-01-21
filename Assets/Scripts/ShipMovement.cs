@@ -30,7 +30,10 @@ public class ShipMovement : MonoBehaviour
         float posX = (centre.X / 620.0f) * 40.0f;
         float posY = (((centre.Y - 460) / 460.0f) * 20.0f) * -1.0f;
 
-        Debug.Log("2 " + posX + (" - ") + posY);
+        if (posX < 0 || posX > 620 || posY < 0 || posY > 460)
+        {
+            Debug.Log(posX + " - " + posY);
+        }
         
         gameObject.transform.position = new Vector3(posX, posY);
         
