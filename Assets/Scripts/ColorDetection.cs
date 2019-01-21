@@ -20,16 +20,34 @@ public class ColorDetection : MonoBehaviour
 
     public Image imageGO;
 
-    public int h_high = 255;
-    public int h_low = 0;
-    public int s_high = 255;
-    public int s_low = 0;
-    public int v_high = 255;
-    public int v_low = 0;
+    [Header("HSV Blue")]
+    public int h_high_blue = 255;
+    public int h_low_blue = 0;
+    public int s_high_blue = 255;
+    public int s_low_blue = 0;
+    public int v_high_blue = 255;
+    public int v_low_blue = 0;
 
-    public static Point centroid;
+    [Header("HSV Yellow")]
+    public int h_high_yellow = 255;
+    public int h_low_yellow = 0;
+    public int s_high_yellow = 255;
+    public int s_low_yellow = 0;
+    public int v_high_yellow = 255;
+    public int v_low_yellow = 0;
+
+
+    [Header("Centroids position")]
+    public static Tuple<int, int> yellowTuple;
+    public static Tuple<int, int> blueTuple;
 
     public int size_structure = 4;
+
+    [Header("Contours Size")]
+    [Range(0, 50000)]
+    public float contourSizeMin;
+    [Range(0, 50000)]
+    public float contourSizeMax;
 
     void Start()
     {
@@ -44,66 +62,93 @@ public class ColorDetection : MonoBehaviour
             imageMat = _webcam.QueryFrame();
             CvInvoke.Flip(imageMat, imageMat, FlipType.Horizontal);
 
+            Mat imageYellowDetect = imageMat.Clone();
+            Mat imageBlueDetect = imageMat.Clone();
+
             //matrice hsv
             Mat HsvMat = imageMat.Clone();
             CvInvoke.CvtColor(HsvMat, HsvMat, ColorConversion.Bgr2Hsv);
             //conversion au format image
             Image<Hsv, byte> HsvImage = HsvMat.ToImage<Hsv, byte>();
-
-
-            //matrice binaire (noir et blanc)
-            Mat binaryMat = HsvImage.InRange(new Hsv(h_low, s_low, v_low), new Hsv(h_high, s_high, v_high)).Mat;
-
-            Mat binaryMatFiltered = new Mat();
-            binaryMatFiltered = MedianFilter(binaryMat);
-
-
-            //Partie Erosion Dilatation
+            
             Mat structuringElement = CvInvoke.GetStructuringElement(ElementShape.Ellipse, new Size(size_structure, size_structure), new Point(-1, -1));
-            Mat fermetureMat = Fermeture(binaryMatFiltered, structuringElement);
 
 
-            //recherche de contour
-            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
-            VectorOfPoint biggest_contour = new VectorOfPoint();
-            int biggest_contour_index;
-            double biggest_contour_area = 0;
-            Mat hierarchy = new Mat();
-            Mat img_find_contour = new Mat();
-            CvInvoke.FindContours(fermetureMat, contours, hierarchy, RetrType.List, ChainApproxMethod.ChainApproxNone);
+            //Bleu ================================================================================
+            Mat binaryMatBlue = HsvImage.InRange(new Hsv(h_low_blue, s_low_blue, v_low_blue), new Hsv(h_high_blue, s_high_blue, v_high_blue)).Mat;
 
+            blueTuple = Traitement(binaryMatBlue, structuringElement, imageBlueDetect);
 
+            //Jaune ================================================================================
+            Mat binaryMatYellow = HsvImage.InRange(new Hsv(h_low_yellow, s_low_yellow, v_low_yellow), new Hsv(h_high_yellow, s_high_yellow, v_high_yellow)).Mat;
 
-
-
-
-            //plus gros contour
-            for (int i = 0; i < contours.Size; i++)
-            {
-                if (CvInvoke.ContourArea(contours[i]) > biggest_contour_area)
-                {
-                    biggest_contour = contours[i];
-                    biggest_contour_index = i;
-                    biggest_contour_area = CvInvoke.ContourArea(contours[i]);
-                }
-            }
-
-            //centroid
-            var moments = CvInvoke.Moments(biggest_contour);
-            int cx = (int)(moments.M10 / moments.M00);
-            int cy = (int)(moments.M01 / moments.M00);
-            centroid = new Point(cx, cy);
-
-            CvInvoke.DrawContours(imageMat, contours, -1, new MCvScalar(150), 3);
-            CvInvoke.Circle(imageMat, centroid, 5, new MCvScalar(150), 3);
+            yellowTuple = Traitement(binaryMatYellow, structuringElement, imageYellowDetect);
+            
 
             //affichage
-            CvInvoke.Imshow("Image binaire", imageMat);
+            CvInvoke.Imshow("Image Detection Jaune", imageYellowDetect);
+            CvInvoke.Imshow("Image Detection Bleu", imageBlueDetect);
             DisplayImage();
-            CvInvoke.WaitKey(10);
+            CvInvoke.WaitKey(5);
         }
 
     }
+
+
+    private Tuple<int, int> Traitement(Mat m, Mat structure, Mat output)
+    {
+        //filtre median
+        Mat binaryMatFiltered = new Mat();
+        binaryMatFiltered = MedianFilter(m);
+
+        //erosion dilatation
+        Mat fermetureMat = Fermeture(binaryMatFiltered, structure);
+
+        //contours
+        VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+        VectorOfVectorOfPoint desiredContours = new VectorOfVectorOfPoint();
+        Mat hierarchy = new Mat();
+        CvInvoke.FindContours(fermetureMat, contours, hierarchy, RetrType.List, ChainApproxMethod.ChainApproxNone);
+
+        
+        desiredContours.Clear();
+        for (int i = 0; i < contours.Size; i++)
+        {
+            if (CvInvoke.ContourArea(contours[i]) > contourSizeMin && CvInvoke.ContourArea(contours[i]) < contourSizeMax)
+            {
+                desiredContours.Push(contours[i]);
+            }
+        }
+
+        //recherche de contour
+        VectorOfPoint biggest_contour = new VectorOfPoint();
+        int biggest_contour_index;
+        double biggest_contour_area = 0;
+
+        //plus gros contour
+        for (int i = 0; i < desiredContours.Size; i++)
+        {
+            if (CvInvoke.ContourArea(desiredContours[i]) > biggest_contour_area)
+            {
+                biggest_contour = desiredContours[i];
+                biggest_contour_index = i;
+                biggest_contour_area = CvInvoke.ContourArea(desiredContours[i]);
+            }
+        }
+
+        //centroid
+        var moments = CvInvoke.Moments(biggest_contour);
+        int cx = (int)(moments.M10 / moments.M00);
+        int cy = (int)(moments.M01 / moments.M00);
+        Point centroid = new Point(cx, cy);
+        Debug.Log(cx + " - " + cy);
+        CvInvoke.DrawContours(output, desiredContours, -1, new MCvScalar(150), 3);
+        CvInvoke.Circle(output, centroid, 5, new MCvScalar(150), 3);
+
+        return Tuple.Create(cx, cy);
+    }
+
+
 
 
 

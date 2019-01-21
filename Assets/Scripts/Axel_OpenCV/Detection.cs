@@ -106,7 +106,7 @@ public class Detection : MonoBehaviour
         Mat hierarchy = new Mat();
         CvInvoke.AdaptiveThreshold(imageGray, imageGray, maxValue, AdaptiveThresholdType.MeanC, ThresholdType.Binary, blockSize, diviser);
         CvInvoke.FindContours(imageGray, allContours, hierarchy, RetrType.List, ChainApproxMethod.ChainApproxNone);
-        int j = 0;
+        
         desiredContours.Clear();
         for (int i = 0; i < allContours.Size; i++) {
             if (CvInvoke.ContourArea(allContours[i]) > contourSizeMin && CvInvoke.ContourArea(allContours[i]) < contourSizeMax) {
