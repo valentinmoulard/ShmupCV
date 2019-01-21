@@ -89,7 +89,6 @@ public class ColorDetection : MonoBehaviour
             int cy = (int)(moments.M01 / moments.M00);
             centroid = new Point(cx, cy);
 
-
             CvInvoke.DrawContours(imageMat, contours, -1, new MCvScalar(150), 3);
             CvInvoke.Circle(imageMat, centroid, 5, new MCvScalar(150), 3);
 
