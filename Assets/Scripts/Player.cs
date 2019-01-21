@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     IEnumerator Start()
     {
         spaceship = this.GetComponent<Spaceship>();
-        
+
         while (true)
         {
             spaceship.Shot(transform);
@@ -28,5 +28,29 @@ public class Player : MonoBehaviour
         Vector2 direction = new Vector2(x, y).normalized;
 
         spaceship.Move(direction);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Invoke Layer name
+        string layerName = LayerMask.LayerToName(collision.gameObject.layer);
+
+        if (layerName == "Bullet (Enemy)")
+        {
+            //Delete bullet
+            Destroy(collision.gameObject);
+        }
+
+        if (layerName == "Bullet (Enemy)" || layerName == "Enemy")
+        {
+            //Explosion
+            spaceship.Explosion();
+
+            //Delete Player
+            Destroy(gameObject);
+
+        }
+
+
     }
 }
