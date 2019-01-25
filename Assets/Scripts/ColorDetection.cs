@@ -83,7 +83,7 @@ public class ColorDetection : MonoBehaviour
             Mat binaryMatYellow = HsvImage.InRange(new Hsv(h_low_yellow, s_low_yellow, v_low_yellow), new Hsv(h_high_yellow, s_high_yellow, v_high_yellow)).Mat;
 
             yellowTuple = Traitement(binaryMatYellow, structuringElement, imageYellowDetect);
-            
+
 
             //affichage
             CvInvoke.Imshow("Image Detection Jaune", imageYellowDetect);
@@ -141,7 +141,6 @@ public class ColorDetection : MonoBehaviour
         int cx = (int)(moments.M10 / moments.M00);
         int cy = (int)(moments.M01 / moments.M00);
         Point centroid = new Point(cx, cy);
-        Debug.Log(cx + " - " + cy);
         CvInvoke.DrawContours(output, desiredContours, -1, new MCvScalar(150), 3);
         CvInvoke.Circle(output, centroid, 5, new MCvScalar(150), 3);
 
@@ -209,6 +208,7 @@ public class ColorDetection : MonoBehaviour
     {
         if (!imageMat.IsEmpty)
         {
+            CvInvoke.Flip(imageMat, imageMat, FlipType.Horizontal);
             Destroy(tex);
             tex = convertMatToTexture2D(imageMat.Clone(), (int)imageGO.rectTransform.rect.width, (int)imageGO.rectTransform.rect.height);
             imageGO.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);

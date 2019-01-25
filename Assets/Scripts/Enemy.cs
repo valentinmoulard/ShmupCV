@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Spaceship spaceship;
+    public int scoreValue = 0;
 
     IEnumerator Start()
     {
@@ -36,9 +37,12 @@ public class Enemy : MonoBehaviour
         string layerName = LayerMask.LayerToName(collision.gameObject.layer);
 
         if (layerName != "Bullet (Player)") return;
-
+        
+        Manager.score += scoreValue;
+        //Debug.Log(Manager.score);
         //Destroy(collision.gameObject);
         spaceship.Explosion();
+
         Destroy(gameObject);
     }
 
