@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     Spaceship spaceship;
     SpriteRenderer spaceShipRenderer;
-    public GameObject playerBullet;
+    GameObject playerBullet;
     // move speed
     public float speed = 5;
 
@@ -27,8 +27,7 @@ public class Player : MonoBehaviour
 
         spaceShipRenderer = gameObject.GetComponent<SpriteRenderer>();
         playerBullet = spaceship.bullet;
-
-
+        this.GetComponent<Animator>().SetBool("isAlive", isAlive);
 
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<Manager>();
 
@@ -87,6 +86,13 @@ public class Player : MonoBehaviour
             currentColor = (currentColor == Color.Yellow) ? Color.Blue : Color.Yellow;
             ColorSwitch();
         }
+
+        //Suicide
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            Destruction();
+        }
+
     }
 
     /// <summary>
@@ -192,11 +198,8 @@ public class Player : MonoBehaviour
 
         if (layerName == "Bullet (Enemy)" || layerName == "Enemy")
         {
-            //Explosion
-            spaceship.Explosion();
 
             Destroy(collision.gameObject);
-
             Destruction();
         }
 
@@ -205,10 +208,13 @@ public class Player : MonoBehaviour
 
     private void Destruction()
     {
+        //Explosion
+        spaceship.Explosion();
         if (isAlive)
         {
             Manager.lifeCounter -= 1;
             isAlive = false;
+            this.GetComponent<Animator>().SetBool("isAlive", isAlive);
             spaceShipRenderer.enabled = false;
             Invoke("Respawn", 2);
         }
@@ -226,6 +232,7 @@ public class Player : MonoBehaviour
     private void Invincible()
     {
         isAlive = true;
+        this.GetComponent<Animator>().SetBool("isAlive", isAlive);
         StartCoroutine("Shoot");
     }
 
