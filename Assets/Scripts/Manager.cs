@@ -14,10 +14,14 @@ public class Manager : MonoBehaviour
     [Header("Game Mode")]
     public bool keyboardMode = false;
 
+    [Header("Color Attributes")]
+    public Color blue;
+    public Color yellow;
 
     void Start()
     {
         lifeCounter = 3;
+
     }
 
     private void Update()

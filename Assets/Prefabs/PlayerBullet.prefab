@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5574172667871593041}
   m_Layer: 10
   m_Name: PlayerBullet
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9a0317eefd42740f0997b1c4587a47ff, type: 3}
-  m_Color: {r: 0.8867924, g: 0.8424423, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.98021173, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -235,7 +235,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9a0317eefd42740f0997b1c4587a47ff, type: 3}
-  m_Color: {r: 0.8867924, g: 0.8424423, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.98021173, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

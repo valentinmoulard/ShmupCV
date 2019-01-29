@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     Spaceship spaceship;
     SpriteRenderer spaceShipRenderer;
+    public GameObject playerBullet;
     // move speed
     public float speed = 5;
 
@@ -18,12 +19,17 @@ public class Player : MonoBehaviour
 
 
 
+
     void Start()
     {
         currentColor = Color.Blue;
         spaceship = this.GetComponent<Spaceship>();
 
         spaceShipRenderer = gameObject.GetComponent<SpriteRenderer>();
+        playerBullet = spaceship.bullet;
+
+
+
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<Manager>();
 
 
@@ -74,8 +80,35 @@ public class Player : MonoBehaviour
 
         // move direction and velocity
         GetComponent<Rigidbody2D>().velocity = direction * speed;
+
+        //Color Switch
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            currentColor = (currentColor == Color.Yellow) ? Color.Blue : Color.Yellow;
+            ColorSwitch();
+        }
     }
 
+    /// <summary>
+    /// Switch the SpriteRenderer's color
+    /// </summary>
+    private void ColorSwitch()
+    {
+        if (currentColor == Color.Yellow)
+        {
+            spaceShipRenderer.color = gameManager.yellow;
+            playerBullet.transform.GetChild(0).GetComponent<SpriteRenderer>().color = gameManager.yellow;
+            playerBullet.transform.GetChild(1).GetComponent<SpriteRenderer>().color = gameManager.yellow;
+
+        }
+        else
+        {
+            spaceShipRenderer.color = gameManager.blue;
+            playerBullet.transform.GetChild(0).GetComponent<SpriteRenderer>().color = gameManager.blue;
+            playerBullet.transform.GetChild(1).GetComponent<SpriteRenderer>().color = gameManager.blue;
+        }
+
+    }
 
     /// <summary>
     /// Switch between the player's colors, and corrected his position
@@ -85,10 +118,12 @@ public class Player : MonoBehaviour
         if (ColorDetection.yellowTuple.Item1 < -10000)
         {
             currentColor = Color.Blue;
+            ColorSwitch();
         }
         else if (ColorDetection.blueTuple.Item1 < -10000)
         {
             currentColor = Color.Yellow;
+            ColorSwitch();
         }
 
         //Debug.Log("yellow : " + x + " - " + y);
