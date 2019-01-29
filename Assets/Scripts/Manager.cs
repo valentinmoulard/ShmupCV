@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class Manager : MonoBehaviour
     public static int lifeCounter;
     // Singleton Game Object
     public static Manager instance = null;
+    public Image[] lives;
+    public Text scoreText;
+
+    public bool gameStopped = false;
+    public GameObject pauseObject;
+    public GameObject pauseManager;
 
 
     [Header("Scripts")]
@@ -49,10 +56,44 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
+        if(lifeCounter == 2)
+        {
+            lives[2].gameObject.SetActive(false);
+            Debug.Log("life counter = 2");
+        }
+        else if (lifeCounter == 1)
+        {
+            lives[1].gameObject.SetActive(false);
+
+        }
+        else if (lifeCounter == 0)
+        {
+            lives[0].gameObject.SetActive(false);
+
+        }
         if (lifeCounter < 0)
         {
             Destroy(Player);
         }
+
+        scoreText.text = "Score\n\n" + score;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameStopped = !gameStopped;
+            if (gameStopped) { 
+                Time.timeScale = 0f;
+                pauseObject.SetActive(true);
+                pauseManager.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                pauseObject.SetActive(false);
+                pauseManager.SetActive(false);
+            }
+        }
+        
     }
 
 
