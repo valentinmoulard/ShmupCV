@@ -8,7 +8,12 @@ public class Manager : MonoBehaviour
     public static int score = 0;
     public static int lifeCounter;
 
+    [Header("Scripts")]
     public GameObject Player;
+
+    [Header("Game Mode")]
+    public bool keyboardMode = false;
+
 
     void Start()
     {
