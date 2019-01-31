@@ -1600,7 +1600,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: []
-  scoreText: {fileID: 0}
   gameStopped: 0
   pauseObject: {fileID: 0}
   pauseManager: {fileID: 0}
@@ -1822,7 +1821,7 @@ PrefabInstance:
     - target: {fileID: 852849617690372397, guid: 9121ddb36989442409510a54c33c96fc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -399.6
+      value: -399.5996
       objectReference: {fileID: 0}
     - target: {fileID: 852849617690372397, guid: 9121ddb36989442409510a54c33c96fc,
         type: 3}

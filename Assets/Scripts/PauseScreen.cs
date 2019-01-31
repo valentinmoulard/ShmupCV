@@ -36,6 +36,7 @@ public class PauseScreen : MonoBehaviour
     }
     public void QuitGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 

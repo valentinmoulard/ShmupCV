@@ -64,7 +64,7 @@ public class MainMenuManager : MonoBehaviour {
         {
             for (int i = 0; i < texts.Length; i++)
             {
-                Debug.Log("changing");
+                
                 texts[i].color = new Color(texts[i].color.r, texts[i].color.g, texts[i].color.b, 0f);
             }
             

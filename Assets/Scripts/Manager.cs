@@ -39,29 +39,42 @@ public class Manager : MonoBehaviour
             instance = this;
 
         //If instance already exists and it's not this:
-        else if (instance != this)
-
+        else if (instance != this) { 
+           /* if(SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                Debug.Log("reinit");
+                Reinit();
+            }
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-            Destroy(gameObject);
-
+            else*/
+                Destroy(gameObject);
+        }
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
 
         void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            return;
         lifeCounter = 3;
         scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
         scoreText.text = score.ToString();
 
-        Debug.Log(SceneManager.GetActiveScene().buildIndex.ToString()) ;
+        //Debug.Log(SceneManager.GetActiveScene().buildIndex.ToString()) ;
 
     }
 
     private void Update()
     {
-        if(lifeCounter == 2)
+        
+        if (SceneManager.GetActiveScene().buildIndex == 0) {
+            
+            Reinit();
+            return;
+        }
+        if (lifeCounter == 2)
         {
             lives[2].gameObject.SetActive(false);
             Debug.Log("life counter = 2");
@@ -98,10 +111,17 @@ public class Manager : MonoBehaviour
         }
 
         //Score
+        
         scoreText.text = score.ToString();
 
 
 
+    }
+
+    void Reinit()
+    {
+        Manager.score = 0;
+        lifeCounter = 3;
     }
 
 
