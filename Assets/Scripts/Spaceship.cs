@@ -10,6 +10,7 @@ public class Spaceship : MonoBehaviour
     public GameObject bullet;
     public bool canShot = true;
     public GameObject explosion;
+    
 
     public void Explosion()
     {

@@ -86,8 +86,8 @@ public class ColorDetection : MonoBehaviour
 
 
             //affichage
-            CvInvoke.Imshow("Image Detection Jaune", imageYellowDetect);
-            CvInvoke.Imshow("Image Detection Bleu", imageBlueDetect);
+            //CvInvoke.Imshow("Image Detection Jaune", imageYellowDetect);
+            //CvInvoke.Imshow("Image Detection Bleu", imageBlueDetect);
             DisplayImage();
             CvInvoke.WaitKey(5);
         }
