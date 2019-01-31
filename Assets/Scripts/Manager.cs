@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Manager : MonoBehaviour
     // Singleton Game Object
     public static Manager instance = null;
     public Image[] lives;
-    public Text scoreText;
+    private Text scoreText;
 
     public bool gameStopped = false;
     public GameObject pauseObject;
@@ -51,6 +52,10 @@ public class Manager : MonoBehaviour
         void Start()
     {
         lifeCounter = 3;
+        scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+        scoreText.text = score.ToString();
+
+        Debug.Log(SceneManager.GetActiveScene().buildIndex.ToString()) ;
 
     }
 
@@ -76,8 +81,6 @@ public class Manager : MonoBehaviour
             Destroy(Player);
         }
 
-        scoreText.text = "Score\n\n" + score;
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameStopped = !gameStopped;
@@ -93,7 +96,12 @@ public class Manager : MonoBehaviour
                 pauseManager.SetActive(false);
             }
         }
-        
+
+        //Score
+        scoreText.text = score.ToString();
+
+
+
     }
 
 

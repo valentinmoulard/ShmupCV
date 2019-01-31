@@ -10,13 +10,10 @@ public class Player : MonoBehaviour
     // move speed
     public float speed = 5;
 
-    private bool isAlive = true;
+    private bool isAlive = false;
     private Manager gameManager;
     enum Color { Yellow, Blue };
     Color currentColor;
-
-
-
 
 
 
@@ -28,9 +25,9 @@ public class Player : MonoBehaviour
         spaceShipRenderer = gameObject.GetComponent<SpriteRenderer>();
         playerBullet = spaceship.bullet;
         this.GetComponent<Animator>().SetBool("isAlive", isAlive);
+        Respawn();
 
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<Manager>();
-
 
         StartCoroutine(Shoot());
     }

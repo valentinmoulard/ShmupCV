@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
-            for(int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < transform.childCount; i++)
             {
                 Transform shotPosition = transform.GetChild(i);
                 spaceship.Shot(shotPosition);
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
 
             yield return new WaitForSeconds(spaceship.shotDelay);
         }
-        
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,8 +39,9 @@ public class Enemy : MonoBehaviour
         string layerName = LayerMask.LayerToName(collision.gameObject.layer);
 
         if (layerName != "Bullet (Player)") return;
-        
+
         Manager.score += scoreValue;
+        scoreValue = 0;
         //Debug.Log(Manager.score);
         //Destroy(collision.gameObject);
         spaceship.Explosion();

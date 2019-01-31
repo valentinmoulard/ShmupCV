@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - PlayerBullet
+  - Score
   layers:
   - Default
   - TransparentFX
