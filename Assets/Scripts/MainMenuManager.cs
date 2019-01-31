@@ -74,6 +74,7 @@ public class MainMenuManager : MonoBehaviour {
     }
     public void StartGame()
     {
+        //gameManager.gameStopped = false;
         SceneManager.LoadScene(1);
     }
 

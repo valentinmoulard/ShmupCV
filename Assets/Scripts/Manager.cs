@@ -68,9 +68,9 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         if (SceneManager.GetActiveScene().buildIndex == 0) {
-            
+            Debug.Log("shit");
             Reinit();
             return;
         }
@@ -97,21 +97,23 @@ public class Manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameStopped = !gameStopped;
-            if (gameStopped) { 
-                Time.timeScale = 0f;
-                pauseObject.SetActive(true);
-                pauseManager.SetActive(true);
-            }
-            else
-            {
-                Time.timeScale = 1f;
-                pauseObject.SetActive(false);
-                pauseManager.SetActive(false);
-            }
+        }
+
+        if (gameStopped)
+        {
+            Time.timeScale = 0f;
+            pauseObject.SetActive(true);
+            pauseManager.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            pauseObject.SetActive(false);
+            pauseManager.SetActive(false);
         }
 
         //Score
-        
+
         scoreText.text = score.ToString();
 
 
@@ -122,6 +124,7 @@ public class Manager : MonoBehaviour
     {
         Manager.score = 0;
         lifeCounter = 3;
+        gameStopped = false;
     }
 
 
