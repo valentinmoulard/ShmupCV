@@ -6,14 +6,17 @@ public class Enemy : MonoBehaviour
 {
     Spaceship spaceship;
     public int scoreValue = 0;
+    
+
+    public int speedRotate = 3;
 
     IEnumerator Start()
     {
         spaceship = this.GetComponent<Spaceship>();
-
+        
         spaceship.Move(transform.up * -1);
 
-        if(spaceship.canShot == false)
+        if (spaceship.canShot == false)
         {
             yield break;
         }
@@ -30,7 +33,7 @@ public class Enemy : MonoBehaviour
         }
         
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Invoke Layer name

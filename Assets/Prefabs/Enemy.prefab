@@ -268,6 +268,7 @@ MonoBehaviour:
   canShot: 1
   explosion: {fileID: 3267011402485037920, guid: e29dce1e3827e094f9eabd741194a073,
     type: 3}
+  speedRotate: 20
 --- !u!114 &1778849203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +282,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 100
+  type: 1
