@@ -12,15 +12,14 @@ public class Player : MonoBehaviour
 
     private bool isAlive = false;
     private Manager gameManager;
-    enum Color { Yellow, Blue };
-    Color currentColor;
 
+    Spaceship.ColorType currentColor;
 
 
     void Start()
     {
-        currentColor = Color.Blue;
         spaceship = this.GetComponent<Spaceship>();
+        currentColor = Spaceship.ColorType.secondColor;
 
         spaceShipRenderer = gameObject.GetComponent<SpriteRenderer>();
         playerBullet = spaceship.bullet;
@@ -28,6 +27,9 @@ public class Player : MonoBehaviour
         Respawn();
 
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<Manager>();
+
+        currentColor = Spaceship.ColorType.firstColor;
+        ColorSwitch();
 
         StartCoroutine(Shoot());
     }
@@ -48,7 +50,6 @@ public class Player : MonoBehaviour
     {
         if (!gameManager.keyboardMode)
         {
-            Debug.Log("Keyboard");
             ColorManagement();
         }
         else
@@ -74,13 +75,12 @@ public class Player : MonoBehaviour
         // move direction
         Vector2 direction = new Vector2(x, y).normalized;
 
-        // move direction and velocity
-        GetComponent<Rigidbody2D>().velocity = direction * speed;
+        spaceship.Move(direction);
 
         //Color Switch
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            currentColor = (currentColor == Color.Yellow) ? Color.Blue : Color.Yellow;
+            currentColor = (currentColor == Spaceship.ColorType.firstColor) ? Spaceship.ColorType.secondColor : Spaceship.ColorType.firstColor;
             ColorSwitch();
         }
 
@@ -93,23 +93,25 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// Switch the SpriteRenderer's color
+    /// Switch the SpriteRenderer's color & ColorType of bullet
     /// </summary>
     private void ColorSwitch()
     {
-        if (currentColor == Color.Yellow)
+        if (currentColor == Spaceship.ColorType.firstColor)
         {
-            spaceShipRenderer.color = gameManager.yellow;
-            playerBullet.transform.GetChild(0).GetComponent<SpriteRenderer>().color = gameManager.yellow;
-            playerBullet.transform.GetChild(1).GetComponent<SpriteRenderer>().color = gameManager.yellow;
-
+            spaceShipRenderer.color = spaceship.firstColor;
+            playerBullet.transform.GetChild(0).GetComponent<SpriteRenderer>().color = spaceship.firstColor;
+            playerBullet.transform.GetChild(1).GetComponent<SpriteRenderer>().color = spaceship.firstColor;
         }
         else
         {
-            spaceShipRenderer.color = gameManager.blue;
-            playerBullet.transform.GetChild(0).GetComponent<SpriteRenderer>().color = gameManager.blue;
-            playerBullet.transform.GetChild(1).GetComponent<SpriteRenderer>().color = gameManager.blue;
+            spaceShipRenderer.color = spaceship.secondColor;
+            playerBullet.transform.GetChild(0).GetComponent<SpriteRenderer>().color = spaceship.secondColor;
+            playerBullet.transform.GetChild(1).GetComponent<SpriteRenderer>().color = spaceship.secondColor;
         }
+
+        playerBullet.GetComponent<Bullet>().currentColor = currentColor;
+
 
     }
 
@@ -120,12 +122,12 @@ public class Player : MonoBehaviour
     {
         if (ColorDetection.yellowTuple.Item1 < -10000)
         {
-            currentColor = Color.Blue;
+            currentColor = Spaceship.ColorType.secondColor;
             ColorSwitch();
         }
         else if (ColorDetection.blueTuple.Item1 < -10000)
         {
-            currentColor = Color.Yellow;
+            currentColor = Spaceship.ColorType.firstColor;
             ColorSwitch();
         }
 
@@ -137,7 +139,7 @@ public class Player : MonoBehaviour
 
         switch (currentColor)
         {
-            case Color.Yellow:
+            case Spaceship.ColorType.firstColor:
 
                 x = ColorDetection.yellowTuple.Item1;
                 y = ColorDetection.yellowTuple.Item2;
@@ -148,7 +150,7 @@ public class Player : MonoBehaviour
                 gameObject.transform.position = new Vector3(posX, posY);
                 break;
 
-            case Color.Blue:
+            case Spaceship.ColorType.secondColor:
                 x = ColorDetection.blueTuple.Item1;
                 y = ColorDetection.blueTuple.Item2;
 
@@ -193,7 +195,7 @@ public class Player : MonoBehaviour
         string layerName = LayerMask.LayerToName(collision.gameObject.layer);
 
 
-        if (layerName == "Bullet (Enemy)" || layerName == "Enemy")
+        if ((layerName == "Bullet (Enemy)" && (collision.gameObject.GetComponent<Bullet>().currentColor != currentColor))  || layerName == "Enemy")
         {
 
             Destroy(collision.gameObject);

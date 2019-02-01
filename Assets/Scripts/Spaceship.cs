@@ -10,7 +10,15 @@ public class Spaceship : MonoBehaviour
     public GameObject bullet;
     public bool canShot = true;
     public GameObject explosion;
-    
+    public enum ColorType { firstColor, secondColor };
+
+
+    [Header("Color Attributes")]
+    public Color firstColor;
+    public Color secondColor;
+
+
+
 
     public void Explosion()
     {

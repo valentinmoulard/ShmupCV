@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   lifeTime: 5
+  currentColor: 0
 --- !u!58 &5711613771739182621
 CircleCollider2D:
   m_ObjectHideFlags: 0

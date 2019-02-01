@@ -25,9 +25,7 @@ public class Manager : MonoBehaviour
     [Header("Game Mode")]
     public bool keyboardMode = false;
 
-    [Header("Color Attributes")]
-    public Color blue;
-    public Color yellow;
+
 
 
     void Awake()
@@ -68,16 +66,14 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         if (SceneManager.GetActiveScene().buildIndex == 0) {
-            Debug.Log("shit");
             Reinit();
             return;
         }
         if (lifeCounter == 2)
         {
             lives[2].gameObject.SetActive(false);
-            Debug.Log("life counter = 2");
         }
         else if (lifeCounter == 1)
         {
