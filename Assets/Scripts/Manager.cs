@@ -66,7 +66,6 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         if (SceneManager.GetActiveScene().buildIndex == 0) {
             Reinit();
             return;

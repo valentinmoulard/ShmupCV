@@ -86,7 +86,6 @@ public class Enemy : MonoBehaviour
 
         enemyBullet.GetComponent<Bullet>().currentColor = currentColor;
 
-
     }
 
 }
