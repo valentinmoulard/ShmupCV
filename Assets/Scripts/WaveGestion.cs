@@ -7,6 +7,7 @@ public class WaveGestion : MonoBehaviour
 
     public GameObject[] waves;
     private int currentWave;
+    public GameObject youPassedUI;
 
     IEnumerator Start()
     {
@@ -34,6 +35,7 @@ public class WaveGestion : MonoBehaviour
             // When Wave stored have executed all, currentWave makes 0.（Initialize -> loop）.
             if (waves.Length <= ++currentWave)
             {
+                youPassedUI.SetActive(true);
                 yield break;
             }
         }

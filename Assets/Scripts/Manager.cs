@@ -17,6 +17,7 @@ public class Manager : MonoBehaviour
     public bool gameStopped = false;
     public GameObject pauseObject;
     public GameObject pauseManager;
+    public GameObject gameOver;
 
 
     [Header("Scripts")]
@@ -87,6 +88,8 @@ public class Manager : MonoBehaviour
         if (lifeCounter < 0)
         {
             Destroy(Player);
+            gameOver.SetActive(true);
+            gameOver.transform.GetChild(2).GetComponent<Text>().text = "Score : "+score;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
