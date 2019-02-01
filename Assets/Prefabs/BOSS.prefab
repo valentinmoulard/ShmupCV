@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 1387962772880507985}
   - component: {fileID: 1778849202}
   - component: {fileID: 256260390772683650}
-  - component: {fileID: 1778849201}
   m_Layer: 9
   m_Name: BOSS
   m_TagString: Untagged
@@ -473,21 +472,3 @@ PolygonCollider2D:
       - {x: -0.24, y: 0.21499999}
       - {x: -0.19999999, y: 0.205}
       - {x: -0.235, y: 0.16}
---- !u!114 &1778849201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387962772880507987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d7eadc4f22612944aee53b0e69c57ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  shotDelay: 2
-  bullet: {fileID: 3000488280804750589, guid: dd2f6f3f42d47b0499f76726671b7c00, type: 3}
-  canShot: 1
-  explosion: {fileID: 3267011402485037920, guid: e29dce1e3827e094f9eabd741194a073,
-    type: 3}

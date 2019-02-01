@@ -68,16 +68,13 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         if (SceneManager.GetActiveScene().buildIndex == 0) {
-            Debug.Log("shit");
             Reinit();
             return;
         }
         if (lifeCounter == 2)
         {
             lives[2].gameObject.SetActive(false);
-            Debug.Log("life counter = 2");
         }
         else if (lifeCounter == 1)
         {
