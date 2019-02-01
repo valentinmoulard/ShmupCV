@@ -12,10 +12,18 @@ public class Enemy : MonoBehaviour
     private float timePassed = 0;
     public int speedRotate = 20;
     private GameObject camera;
+    GameObject enemyBullet;
+    SpriteRenderer spaceShipRenderer;
+
+    public int speedRotate = 3;
+
+    public Spaceship.ColorType currentColor;
+
     IEnumerator Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         spaceship = this.GetComponent<Spaceship>();
+
         switch (enemyType)
         {
             case EnemyType.RotatorLeft:
@@ -28,6 +36,15 @@ public class Enemy : MonoBehaviour
                 movementDelay = 0f;
                 break;
         }
+
+        enemyBullet = spaceship.bullet;
+        //enemyBullet = GameObject.Instantiate(spaceship.bullet);
+        spaceShipRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        ColorSwitch();
+
+        spaceship.Move(transform.up * -1);
+
         if (spaceship.canShot == false)
         {
             yield break;
@@ -70,20 +87,49 @@ public class Enemy : MonoBehaviour
                 break;
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Invoke Layer name
         string layerName = LayerMask.LayerToName(collision.gameObject.layer);
 
-        if (layerName != "Bullet (Player)") return;
-        Manager.score += scoreValue;
-        scoreValue = 0;
-        //Debug.Log(Manager.score);
-        //Destroy(collision.gameObject);
-        spaceship.Explosion();
+        if (layerName != "Bullet (Player)")
+        {
+            return;
+        }
+        //If opposite color between the enemy and the bullet, destroy the enemy
+        else if (collision.gameObject.GetComponentInParent<Bullet>().currentColor != currentColor)
+        {
+            Manager.score += scoreValue;
+            scoreValue = 0;
+            //Debug.Log(Manager.score);
+            Destroy(collision.gameObject);
+            spaceship.Explosion();
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
+
+    }
+
+    /// <summary>
+    /// Switch the SpriteRenderer's color & ColorType of bullet
+    /// </summary>
+    private void ColorSwitch()
+    {
+        //Debug.Log("Switch color");
+        if (currentColor == Spaceship.ColorType.firstColor)
+        {
+            spaceShipRenderer.color = spaceship.firstColor;
+            enemyBullet.GetComponent<SpriteRenderer>().color = spaceship.firstColor;
+        }
+        else
+        {
+            spaceShipRenderer.color = spaceship.secondColor;
+            enemyBullet.GetComponent<SpriteRenderer>().color = spaceship.secondColor;
+
+        }
+
+        enemyBullet.GetComponent<Bullet>().currentColor = currentColor;
+
     }
 
 }

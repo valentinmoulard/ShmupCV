@@ -101,8 +101,9 @@ GameObject:
   - component: {fileID: 1387962772880507998}
   - component: {fileID: 1387962772880507985}
   - component: {fileID: 1778849202}
-  - component: {fileID: 1778849201}
+  - component: {fileID: 536584988143915627}
   - component: {fileID: 256260390772683650}
+  - component: {fileID: 2050523999}
   m_Layer: 9
   m_Name: BOSS
   m_TagString: Untagged
@@ -196,7 +197,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1778849201
+--- !u!114 &536584988143915627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,15 +206,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1387962772880507987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d7eadc4f22612944aee53b0e69c57ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 61a0124b4a965f44aa851981ebf5a34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  shotDelay: 2
-  bullet: {fileID: 3000488280804750589, guid: dd2f6f3f42d47b0499f76726671b7c00, type: 3}
-  canShot: 1
-  explosion: {fileID: 3267011402485037920, guid: e29dce1e3827e094f9eabd741194a073,
-    type: 3}
+  speedRotate: 6
+  scoreValue: 1000
+  bullet: {fileID: 0}
+  bullet2: {fileID: 0}
+  laser: {fileID: 0}
+  explosion: {fileID: 0}
+  shield: {fileID: 0}
+  canonPositions: []
+  phase: 0
+  spritePhase1: {fileID: 0}
+  spritePhase2: {fileID: 0}
+  spritePhase3: {fileID: 0}
 --- !u!60 &256260390772683650
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -491,3 +498,31 @@ PolygonCollider2D:
       - {x: -0.24, y: 0.21499999}
       - {x: -0.19999999, y: 0.205}
       - {x: -0.235, y: 0.16}
+--- !u!114 &2050523999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387962772880507987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a0124b4a965f44aa851981ebf5a34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedRotate: 3
+  scoreValue: 1000
+  bullet: {fileID: 3000488280804750589, guid: dd2f6f3f42d47b0499f76726671b7c00, type: 3}
+  bullet2: {fileID: 4734790910224296637, guid: 59693d1a1f339ad43a4fad9e38dc48a6, type: 3}
+  laser: {fileID: 1747628252040016486, guid: 21a1f79c7a57c9e41b5260c56479e0b9, type: 3}
+  explosion: {fileID: 3267011402485037920, guid: e29dce1e3827e094f9eabd741194a073,
+    type: 3}
+  shield: {fileID: 974492704926735130, guid: b1d18a36c31f09f40b2f003a071420f0, type: 3}
+  canonPositions:
+  - {fileID: 1993156591}
+  - {fileID: 1224634856}
+  - {fileID: 553410514}
+  phase: 0
+  spritePhase1: {fileID: 21300000, guid: 074d9f2452e73d54184fe7eb259945df, type: 3}
+  spritePhase2: {fileID: 21300000, guid: 61ac5ec2d8cd21c4a9984567fa199880, type: 3}
+  spritePhase3: {fileID: 21300000, guid: a2d3878213f732e43b5f260aa33b526b, type: 3}
