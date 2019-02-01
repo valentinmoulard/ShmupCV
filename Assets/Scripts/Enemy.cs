@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
         Manager.score += scoreValue;
         scoreValue = 0;
         //Debug.Log(Manager.score);
-        //Destroy(collision.gameObject);
+        Destroy(collision.gameObject);
         spaceship.Explosion();
 
         Destroy(gameObject);
