@@ -40,6 +40,11 @@ public class PauseScreen : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+
     public void HoverStart()
     {
         
