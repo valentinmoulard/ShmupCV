@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
     GameObject enemyBullet;
     SpriteRenderer spaceShipRenderer;
 
-    public int speedRotate = 3;
 
     public Spaceship.ColorType currentColor;
 
@@ -41,7 +40,7 @@ public class Enemy : MonoBehaviour
         //enemyBullet = GameObject.Instantiate(spaceship.bullet);
         spaceShipRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        ColorSwitch();
+        
 
         spaceship.Move(transform.up * -1);
 
@@ -52,6 +51,7 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
+            ColorSwitch();
             for (int i = 0; i < transform.childCount; i++)
             {
                 Transform shotPosition = transform.GetChild(i);

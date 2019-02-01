@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 100
-  enemyType: 1
+  enemyType: 0
+  movementDelay: 0
   speedRotate: 3
   currentColor: 1
