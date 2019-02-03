@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     GameObject playerBullet;
     // move speed
     public float speed = 5;
-
+    private float borderValueX = 2.85f;
+    private float borderValueY = 2.7f;
     private bool isAlive = false;
     private Manager gameManager;
 
@@ -171,21 +172,21 @@ public class Player : MonoBehaviour
     /// </summary>
     private void BorderManagement()
     {
-        if (transform.position.x > 3.5f)
+        if (transform.position.x > borderValueX)
         {
-            transform.position = new Vector3(3.5f, transform.position.y);
+            transform.position = new Vector3(borderValueX, transform.position.y);
         }
-        if (transform.position.x < -3.5f)
+        if (transform.position.x < -borderValueX)
         {
-            transform.position = new Vector3(-3.5f, transform.position.y);
+            transform.position = new Vector3(-borderValueX, transform.position.y);
         }
-        if (transform.position.y > 2.6f)
+        if (transform.position.y > borderValueY)
         {
-            transform.position = new Vector3(transform.position.x, 2.6f);
+            transform.position = new Vector3(transform.position.x, borderValueY);
         }
-        if (transform.position.y < -2.6f)
+        if (transform.position.y < -borderValueY)
         {
-            transform.position = new Vector3(transform.position.x, -2.6f);
+            transform.position = new Vector3(transform.position.x, -borderValueY);
         }
     }
 

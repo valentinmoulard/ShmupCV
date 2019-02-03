@@ -6,7 +6,9 @@ public class DestroyArea : MonoBehaviour
 {
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+       if(!collision.CompareTag("Player")){
+            Destroy(collision.gameObject);
+        }
     }
 
 }
