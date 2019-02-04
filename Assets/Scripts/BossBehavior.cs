@@ -7,6 +7,7 @@ public class BossBehavior : MonoBehaviour
 
     Spaceship spaceship;
     public int speedRotate = 6;
+    public float speed = 5;
     public int scoreValue = 1000;
 
 
@@ -15,6 +16,8 @@ public class BossBehavior : MonoBehaviour
     public GameObject laser;
     public GameObject explosion;
     public GameObject shield;
+
+    public Vector3 GoToPosition;
 
     float shootCooldown = 2;
     float shootTimer = 0;
@@ -31,7 +34,7 @@ public class BossBehavior : MonoBehaviour
     public List<GameObject> canonPositions = new List<GameObject>();
 
 
-    public enum BossPhase { phase1, phase2, phase3};
+    public enum BossPhase {phase0, phase1, phase2, phase3};
     public BossPhase phase;
 
     public Sprite spritePhase1;
@@ -41,20 +44,28 @@ public class BossBehavior : MonoBehaviour
     Sprite currentSprite;
 
     float bulletNumber = 8;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         invincibleTimer = 5;
-        phase = BossPhase.phase1;
+        phase = BossPhase.phase0;
+        
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
 
         switch (phase)
         {
+            case BossPhase.phase0:
+                BossRotate(speedRotate * 7);
+                transform.position = Vector2.MoveTowards(transform.position, GoToPosition, speed * Time.deltaTime);
+                if (Vector3.Distance(GoToPosition,transform.position) < 0.1f)
+                {
+                    phase = BossPhase.phase1;
+                }
+                break;
+
             case BossPhase.phase1:
                 GetComponent<SpriteRenderer>().sprite = spritePhase1;
 
@@ -97,11 +108,11 @@ public class BossBehavior : MonoBehaviour
 
         invincibleTimer += Time.deltaTime;
 
-        if (health < 5)
+        if (health < 4 && health >=2)
         {
             phase = BossPhase.phase2;
         }
-        else if (health < 3)
+        else if (health < 2)
         {
             phase = BossPhase.phase3;
         }
@@ -183,7 +194,7 @@ public class BossBehavior : MonoBehaviour
         //Invoke Layer name
         string layerName = LayerMask.LayerToName(collision.gameObject.layer);
 
-        if (layerName != "Bullet (Player)") return;
+        if (layerName != "Bullet (Player)" || phase == BossPhase.phase0) return;
         Destroy(collision.gameObject);
 
         if (invincibleTimer > invincibleTime)

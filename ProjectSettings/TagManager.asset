@@ -8,6 +8,8 @@ TagManager:
   - PlayerBullet
   - Score
   - Pause
+  - Boss
+  - Laser
   layers:
   - Default
   - TransparentFX

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5464768575057181423}
   - component: {fileID: 5464768575057181420}
   - component: {fileID: 5464768575057181417}
-  - component: {fileID: 5464768575057181422}
   - component: {fileID: 5711613771739182621}
+  - component: {fileID: 4183929648256375979}
   m_Layer: 11
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 9a0317eefd42740f0997b1c4587a47ff, type: 3}
-  m_Color: {r: 1, g: 0.95985556, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.36430502, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,21 +103,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5464768575057181422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464768575057181421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85080a300c256d4d9a423ca4b25c353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  lifeTime: 5
-  currentColor: 0
 --- !u!58 &5711613771739182621
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +119,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
+--- !u!114 &4183929648256375979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464768575057181421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85080a300c256d4d9a423ca4b25c353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  lifeTime: 5
+  currentColor: 1
