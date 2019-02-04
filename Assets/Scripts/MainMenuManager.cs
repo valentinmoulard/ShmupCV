@@ -23,7 +23,7 @@ public class MainMenuManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         textClignotant = new Text[] { startText, quitText };
-        if (gameManager.keyboardMode)
+        if (Manager.keyboardMode)
         {
             modeSprite.image.sprite = keyboard;
         }
@@ -118,9 +118,9 @@ public class MainMenuManager : MonoBehaviour {
 
     public void changeMode()
     {
-        gameManager.keyboardMode = !gameManager.keyboardMode;
-        Debug.Log(gameManager.keyboardMode);
-        if (gameManager.keyboardMode)
+        Manager.keyboardMode = !Manager.keyboardMode;
+        Debug.Log(Manager.keyboardMode);
+        if (Manager.keyboardMode)
         {
             modeSprite.image.sprite = keyboard;
         }

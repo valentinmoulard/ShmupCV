@@ -24,7 +24,7 @@ public class Manager : MonoBehaviour
     public GameObject Player;
 
     [Header("Game Mode")]
-    public bool keyboardMode = false;
+    public static bool keyboardMode = false;
 
 
 
@@ -114,6 +114,17 @@ public class Manager : MonoBehaviour
 
         scoreText.text = score.ToString();
 
+        if (Input.GetKey(KeyCode.KeypadEnter))
+        {
+            Debug.Log("test");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //NextLevel();
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(0);
+        }
 
 
     }

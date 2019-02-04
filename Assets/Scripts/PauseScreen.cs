@@ -16,12 +16,15 @@ public class PauseScreen : MonoBehaviour
     void Start()
     {
         manager = FindObjectOfType<Manager>().GetComponent<Manager>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
         CoolFlash(titleText);
+
+
         
     }
 
