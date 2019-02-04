@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         }
 
         //Suicide
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.RightControl))
         {
             Destruction();
         }
