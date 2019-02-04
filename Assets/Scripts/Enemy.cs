@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
                 break;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Invoke Layer name
