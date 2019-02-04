@@ -198,11 +198,12 @@ public class Player : MonoBehaviour
 
         if ((layerName == "Bullet (Enemy)" && (collision.gameObject.GetComponent<Bullet>().currentColor != currentColor))  || layerName == "Enemy")
         {
-
-            Destroy(collision.gameObject);
+            if (!collision.CompareTag("Laser"))
+            {
+                Destroy(collision.gameObject);
+            }
             Destruction();
         }
-
     }
 
 
