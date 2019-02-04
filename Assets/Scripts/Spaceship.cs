@@ -28,6 +28,7 @@ public class Spaceship : MonoBehaviour
     public void Shot(Transform origin)
     {
         Instantiate(bullet, origin.position, origin.rotation);
+        //bullet.GetComponent<Rigidbody2D>().velocity = transform.up * -1 * speed;
     }
 
     public void Move(Vector2 direction)

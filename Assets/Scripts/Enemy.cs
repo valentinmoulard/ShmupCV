@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum EnemyType { Basic, RotatorRight,RotatorLeft };
+public enum EnemyType { Basic, Rotator };
 
 public class Enemy : MonoBehaviour
 {
@@ -25,10 +25,8 @@ public class Enemy : MonoBehaviour
 
         switch (enemyType)
         {
-            case EnemyType.RotatorLeft:
+            case EnemyType.Rotator:
                 movementDelay = 3f;
-                break;
-            case EnemyType.RotatorRight:
                 movementDelay = 3f;
                 break;
             case EnemyType.Basic:
@@ -41,8 +39,8 @@ public class Enemy : MonoBehaviour
         spaceShipRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         
-
-        spaceship.Move(transform.up * -1);
+        
+         spaceship.Move(transform.up * -1);
 
         if (spaceship.canShot == false)
         {
@@ -54,7 +52,7 @@ public class Enemy : MonoBehaviour
             ColorSwitch();
             for (int i = 0; i < transform.childCount; i++)
             {
-                Debug.Log("lol");
+                
                 Transform shotPosition = transform.GetChild(i);
                 spaceship.Shot(shotPosition);
             }
@@ -68,23 +66,15 @@ public class Enemy : MonoBehaviour
         Vector3 stopPosition;
         switch (enemyType)
         {
-            case EnemyType.RotatorRight :
-               
+            case EnemyType.Rotator :
+                gameObject.GetComponent<Sprite>();
                 transform.Rotate(Vector3.forward * Time.deltaTime * speedRotate);
                 // moving the object
-                
-                stopPosition = new Vector3(camera.transform.position.x / 2, transform.position.y, transform.position.z);
-                Debug.Log(stopPosition);
+                stopPosition = new Vector3(transform.position.x , 1.5f, transform.position.z);
+                /*Debug.Log("Rotate Right"+stopPosition);*/
                 transform.position =  Vector3.MoveTowards(transform.position, stopPosition, Time.deltaTime);
-                break;
-            case EnemyType.RotatorLeft:
-
-                transform.Rotate(Vector3.forward * Time.deltaTime * speedRotate);
-                // moving the object
-                float cameraWidth = camera.GetComponent<Camera>().orthographicSize * 2f * camera.GetComponent<Camera>().aspect;
-                float stopPosX = camera.transform.position.x + (cameraWidth - camera.transform.position.x) / 2;
-                stopPosition = new Vector3(stopPosX, transform.position.y, transform.position.z);
-                transform.position = Vector3.MoveTowards(transform.position, stopPosition, Time.deltaTime);
+                    
+                
                 break;
         }
     }
