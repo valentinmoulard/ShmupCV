@@ -521,7 +521,7 @@ PrefabInstance:
     - target: {fileID: 4353458016668502980, guid: 11201866b5d4fc24aa62c421b28f16e5,
         type: 3}
       propertyPath: shotDelay
-      value: 0.5
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8312756236812530995, guid: 11201866b5d4fc24aa62c421b28f16e5,
         type: 3}
@@ -690,6 +690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2056103045675220365, guid: 049f5fe894f83ea47804741e79519027,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 241592396518414347, guid: 049f5fe894f83ea47804741e79519027,
         type: 3}
@@ -919,19 +924,19 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[0]
       value: 
-      objectReference: {fileID: 3961170463480377233, guid: 67753d8b3a8970b40a486a33ce831365,
+      objectReference: {fileID: 3961170463480377233, guid: 1b69563b3eb307d4f8d47e67e6e595fb,
         type: 3}
     - target: {fileID: 2394679968357256690, guid: 1928e52f8098c3c4588d4828764720be,
         type: 3}
       propertyPath: waves.Array.data[1]
       value: 
-      objectReference: {fileID: 3961170463480377233, guid: 67753d8b3a8970b40a486a33ce831365,
+      objectReference: {fileID: 3961170463480377233, guid: a00517b00be3afc4e9a37e17bffe2c26,
         type: 3}
     - target: {fileID: 2394679968357256690, guid: 1928e52f8098c3c4588d4828764720be,
         type: 3}
       propertyPath: waves.Array.data[2]
       value: 
-      objectReference: {fileID: 3961170463480377233, guid: 67753d8b3a8970b40a486a33ce831365,
+      objectReference: {fileID: 3961170463480377233, guid: dd19e62695e2cee429f1ddc6388d2dea,
         type: 3}
     - target: {fileID: 2394679968357256690, guid: 1928e52f8098c3c4588d4828764720be,
         type: 3}
@@ -1128,6 +1133,11 @@ PrefabInstance:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 292130543}
+    - target: {fileID: 7921724553668889397, guid: cb44c3577ef53614aabc46a0bf53c2f5,
+        type: 3}
+      propertyPath: keyboardMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb44c3577ef53614aabc46a0bf53c2f5, type: 3}
 --- !u!1001 &8443381528808693138

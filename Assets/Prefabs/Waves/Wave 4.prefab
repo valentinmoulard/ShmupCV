@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3961170463480377238}
   m_Layer: 0
-  m_Name: Wave
+  m_Name: Wave 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ PrefabInstance:
     - target: {fileID: 1387962772880507998, guid: d589d32384b1e1141ba6a318f93242dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1387962772880507998, guid: d589d32384b1e1141ba6a318f93242dc,
         type: 3}
@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1778849203, guid: d589d32384b1e1141ba6a318f93242dc, type: 3}
       propertyPath: currentColor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d589d32384b1e1141ba6a318f93242dc, type: 3}
@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 1387962772880507998, guid: d589d32384b1e1141ba6a318f93242dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1387962772880507998, guid: d589d32384b1e1141ba6a318f93242dc,
         type: 3}
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1778849203, guid: d589d32384b1e1141ba6a318f93242dc, type: 3}
       propertyPath: currentColor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d589d32384b1e1141ba6a318f93242dc, type: 3}

@@ -246,8 +246,8 @@ MonoBehaviour:
   canShot: 1
   explosion: {fileID: 3267011402485037920, guid: e29dce1e3827e094f9eabd741194a073,
     type: 3}
-  firstColor: {r: 0, g: 0, b: 0, a: 0}
-  secondColor: {r: 0, g: 0, b: 0, a: 0}
+  firstColor: {r: 1, g: 0.95985556, b: 0, a: 1}
+  secondColor: {r: 0, g: 0.36430502, b: 1, a: 1}
 --- !u!114 &1778849203
 MonoBehaviour:
   m_ObjectHideFlags: 0
