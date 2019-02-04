@@ -54,7 +54,6 @@ public class Enemy : MonoBehaviour
             ColorSwitch();
             for (int i = 0; i < transform.childCount; i++)
             {
-                Debug.Log("lol");
                 Transform shotPosition = transform.GetChild(i);
                 spaceship.Shot(shotPosition);
             }
