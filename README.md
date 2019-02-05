@@ -27,6 +27,11 @@ Bref, pour tuer les saligauds jaunes, il faut tirer des bouboules bleues.
 Pour tirer des bouboules jaunes, il faut tuer des saligauds bleus.
 Euh.. non attendez, c'est ça ou pas ? Laissez tomber. 
 
+<p align="center">
+  <img src="Assets/Resources/shmupCV.gif">
+</p>
+
+
 ## Daltonien ?
 Notre jeu aussi flexible qu'une personne âgée experte en yoga, vous permet de choisir les couleurs que vous souhaitez afficher pour les différentes entités. 
 
