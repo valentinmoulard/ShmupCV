@@ -35,8 +35,8 @@ Vidéo de présentation du jeu :
 
 Have fun.
 
-##Team
+## Team
 
-**Valentin Moulard
-Axel Tétart
-Takie Yamani**
+**Valentin Moulard**
+**Axel Tétart**
+**Takie Yamani**
