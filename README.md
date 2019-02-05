@@ -11,7 +11,7 @@ Une webcam + des post-it + une règle.
 <p align="center">
   <img src="Assets/Resources/webcam.png">
   <img src="Assets/Resources/postit.jpg">
-  <img src="Assets/Resources/regle.jpg">
+  <img src="Assets/Resources/regle.png">
 </p>
 
 Un dispositif disponible ici : 
