@@ -35,7 +35,7 @@ Euh.. non attendez, c'est ça ou pas ? Laissez tomber.
 ## Daltonien ?
 Notre jeu aussi flexible qu'une personne âgée experte en yoga, vous permet de choisir les couleurs que vous souhaitez afficher pour les différentes entités. 
 
-Vidéo de présentation du jeu :
+## Vidéo de présentation du jeu :
 
 https://youtu.be/QfLZ563lHq0
 
