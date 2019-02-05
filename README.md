@@ -8,6 +8,18 @@ Moins cher qu'une Kinect (R.I.P.) et plus cool qu'une nostalgique Eyetoy, jouer 
 
 Une webcam + des post-it + une règle.
 
+<p align="left">
+  <img src="Assets/Resources/webcam.png">
+</p>
+
+<p align="center">
+  <img src="Assets/Resources/postit.jpg">
+</p>
+
+<p align="right">
+  <img src="Assets/Resources/regle.jpg">
+</p>
+
 Un dispositif disponible ici : 
 
 https://www.latlmes.com/tech/shmupcv-stuff-for-only-127-dollars-1
