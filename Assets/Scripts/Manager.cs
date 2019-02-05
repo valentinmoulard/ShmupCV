@@ -57,7 +57,7 @@ public class Manager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
             return;
-        lifeCounter = 3;
+        lifeCounter = 5;
         scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
         scoreText.text = score.ToString();
 
@@ -114,7 +114,7 @@ public class Manager : MonoBehaviour
 
         scoreText.text = score.ToString();
 
-        if (Input.GetKey(KeyCode.KeypadEnter))
+        if (Input.GetKey(KeyCode.Return))
         {
             Debug.Log("test");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

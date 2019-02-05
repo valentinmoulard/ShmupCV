@@ -783,8 +783,8 @@ MonoBehaviour:
   s_low_blue: 130
   v_high_blue: 255
   v_low_blue: 130
-  h_high_yellow: 40
-  h_low_yellow: 20
+  h_high_yellow: 20
+  h_low_yellow: 10
   s_high_yellow: 255
   s_low_yellow: 59
   v_high_yellow: 255
@@ -901,11 +901,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2056103046329986392, guid: 049f5fe894f83ea47804741e79519027,
-        type: 3}
-      propertyPath: m_Text
-      value: SHMUP
       objectReference: {fileID: 0}
     - target: {fileID: 241592396518414347, guid: 049f5fe894f83ea47804741e79519027,
         type: 3}

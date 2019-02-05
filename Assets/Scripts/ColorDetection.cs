@@ -36,6 +36,12 @@ public class ColorDetection : MonoBehaviour
     public int v_high_yellow = 255;
     public int v_low_yellow = 0;
 
+    /*Jaune
+     * H 40 -20
+     * S 255-59
+     * V 255-160
+     */
+
 
     [Header("Centroids position")]
     public static Tuple<int, int> yellowTuple;
