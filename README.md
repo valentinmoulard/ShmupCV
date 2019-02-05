@@ -37,6 +37,6 @@ Have fun.
 
 ## Team
 
-**Valentin Moulard**
-**Axel Tétart**
-**Takie Yamani**
+**Valentin Moulard** <br/>
+**Axel Tétart** <br/>
+**Takie Yamani** <br/>
