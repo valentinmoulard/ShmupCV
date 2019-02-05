@@ -544,14 +544,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1359676363, guid: 11201866b5d4fc24aa62c421b28f16e5, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4353458016668502980, guid: 11201866b5d4fc24aa62c421b28f16e5,
         type: 3}
       propertyPath: shotDelay
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359676363, guid: 11201866b5d4fc24aa62c421b28f16e5, type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8312756236812530995, guid: 11201866b5d4fc24aa62c421b28f16e5,
         type: 3}
